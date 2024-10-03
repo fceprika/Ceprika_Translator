@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Ceprika\Aitranslator\Model\Translator">
+        <arguments>
+            <argument name="apiKey" xsi:type="string">YOUR_CHATGPT_API_KEY</argument>
+        </arguments>
+    </type>
+    <type name="Magento\Framework\Console\CommandList">
+        <arguments>
+            <argument name="commands" xsi:type="array">
+                <item name="translateCategories" xsi:type="object">Ceprika\Aitranslator\Console\Command\TranslateCategories</item>
+                <item name="translateProducts" xsi:type="object">Ceprika\Aitranslator\Console\Command\TranslateProducts</item>
+            </argument>
+        </arguments>
+    </type>
+</config>

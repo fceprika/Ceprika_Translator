@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Config/etc/system_file.xsd">
+    <system>
+        <tab id="ai_translator" translate="label" sortOrder="100">
+            <label>AI Translator</label>
+        </tab>
+        <section id="ai_translator" translate="label" type="text" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Settings</label>
+            <tab>ai_translator</tab>
+            <resource>Ceprika_Aitranslator::config</resource>
+            <group id="settings" translate="label" type="text" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>General Settings</label>
+                <field id="ai_provider" translate="label" type="select" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>AI Provider</label>
+                    <source_model>Ceprika\Aitranslator\Model\Config\Source\AiProvider</source_model>
+                </field>
+                <field id="gpt_api_key" translate="label" type="obscure" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>GPT API Key</label>
+                    <backend_model>Magento\Config\Model\Config\Backend\Encrypted</backend_model>
+                    <validate>required-entry</validate>
+                    <depends>
+                        <field id="ai_provider">gpt</field>
+                    </depends>
+                </field>
+                <field id="claude_api_key" translate="label" type="obscure" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Claude API Key</label>
+                    <backend_model>Magento\Config\Model\Config\Backend\Encrypted</backend_model>
+                    <validate>required-entry</validate>
+                    <depends>
+                        <field id="ai_provider">claude</field>
+                    </depends>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>
